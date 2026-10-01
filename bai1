@@ -1,0 +1,97 @@
+using System;
+
+class Program
+{
+    // Hàm kiểm tra số nguyên tố
+    static bool IsPrime(int n)
+    {
+        if (n < 2)
+            return false;
+
+        for (int i = 2; i < n; i++)
+        {
+            if (n % i == 0)
+                return false;
+        }
+
+        return true;
+    }
+
+    // Hàm kiểm tra số hoàn hảo
+    static bool IsPerfectNumber(int n)
+    {
+        int sum = 0;
+
+        for (int i = 1; i < n; i++)
+        {
+            if (n % i == 0)
+            {
+                sum = sum + i;
+            }
+        }
+
+        return sum == n;
+    }
+
+    // Hàm in N số Fibonacci
+    static void PrintFibonacci(int n)
+    {
+        int a = 0;
+        int b = 1;
+
+        Console.Write("Dãy Fibonacci " + n + " số: ");
+
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write(a);
+
+            if (i < n - 1)
+            {
+                Console.Write(", ");
+            }
+
+            int c = a + b;
+            a = b;
+            b = c;
+        }
+
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        // Nhập N
+        Console.Write("Nhập N: ");
+        int N = int.Parse(Console.ReadLine());
+
+        // Kiểm tra N là số nguyên dương
+        while (N <= 0)
+        {
+            Console.Write("N phải lớn hơn 0. Nhập lại N: ");
+            N = int.Parse(Console.ReadLine());
+        }
+
+        // Kiểm tra số nguyên tố
+        if (IsPrime(N))
+        {
+            Console.WriteLine(N + " là Số nguyên tố!");
+        }
+        else
+        {
+            Console.WriteLine(N + " KHÔNG là Số nguyên tố.");
+        }
+
+        // Kiểm tra số hoàn hảo
+        if (IsPerfectNumber(N))
+        {
+            Console.WriteLine(N + " là Số hoàn hảo!");
+        }
+        else
+        {
+            Console.WriteLine(N + " KHÔNG là Số hoàn hảo.");
+        }
+
+        // In Fibonacci
+        PrintFibonacci(N);
+    }
+}
